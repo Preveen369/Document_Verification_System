@@ -1,4 +1,4 @@
-# 🔒 Document Verification System (Blockchain-based, Console Python App)
+# 🔒 Document Verification System (Blockchain-based Python App)
 
 
 ## 📄 1. Project Overview
