@@ -1,0 +1,175 @@
+# Document Verification System
+
+## 1. PROJECT OVERVIEW
+
+The Document Verification System is a blockchain-based Python application that provides secure document verification through immutable hash storage. This console application demonstrates blockchain concepts while solving real-world document authenticity problems.
+
+**Core Concept**: Creates an immutable ledger of document hashes, allowing users to prove document existence at specific times without revealing content.
+
+## 2. TECHNICAL ARCHITECTURE
+
+**Block Structure**:
+- `index`: Sequential position in blockchain
+- `timestamp`: ISO 8601 creation time
+- `data`: SHA-256 hash of verified document
+- `previous_hash`: Links to previous block
+- `hash`: SHA-256 of current block content
+
+**Key Components**:
+- Blockchain class managing chain lifecycle
+- File processing with memory-efficient streaming
+- SHA-256 cryptographic hashing for security
+- JSON persistence for data storage
+
+## 3. MAIN FEATURES
+
+**Document Operations**:
+- Add documents with SHA-256 hash computation
+- Verify document existence in blockchain
+- Prevent duplicate entries automatically
+- Support all file types through binary processing
+
+**Blockchain Management**:
+- Display complete chain information
+- Validate entire chain integrity
+- Automatic persistence after changes
+- Configurable file extension filtering
+
+## 4. MODULES AND FEATURES INVOLVED
+
+### 4.1 Core Modules (Based on Codebase Analysis)
+
+**Block Module (`Block` dataclass)**:
+- Immutable data structure with fields: index, timestamp, data, previous_hash, hash
+- Automatic serialization through dataclass and asdict() functionality
+- Type-safe field definitions with explicit typing annotations
+
+**Blockchain Module (`Blockchain` class)**:
+- `__init__()`: Initializes empty chain and creates genesis block
+- `_create_genesis_block()`: Creates first block with 64-zero previous hash
+- `_compute_hash()`: SHA-256 hashing of block content (index + timestamp + data + previous_hash)
+- `add_block()`: Adds new block with automatic linking to previous block
+- `is_document_in_chain()`: Searches entire chain for document hash existence
+- `print_chain()`: Displays formatted blockchain information
+- `is_valid()`: Validates complete chain integrity and hash linkage
+
+**File Processing Module**:
+- `compute_file_sha256()`: Streams file in 8KB chunks for memory efficiency
+- Supports files of unlimited size through chunked reading
+- Binary file processing for all file types
+- Error handling for file access issues (FileNotFoundError, PermissionError)
+
+**Persistence Module**:
+- `to_dict()`: Converts blockchain to serializable dictionary format
+- `from_dict()`: Reconstructs blockchain from dictionary with validation
+- `save_to_file()`: JSON serialization to blockchain.json
+- `load_from_file()`: JSON deserialization with error recovery
+- Automatic fallback to fresh blockchain on corruption
+
+**CLI Interface Module**:
+- `main()`: Seven-option interactive menu system
+- `prompt_file_path()`: User input handling with path validation
+- `clear_console()`: Cross-platform console clearing (Windows/Linux/macOS)
+- `is_allowed_extension()`: File extension filtering logic
+
+### 4.2 Feature Implementation Analysis
+
+**Document Addition Feature**:
+- File path input and validation
+- File existence checking with os.path.isfile()
+- Extension filtering (configurable at runtime)
+- Duplicate prevention through hash comparison
+- Automatic blockchain persistence after addition
+- Comprehensive error handling (file not found, permissions, OS errors)
+
+**Document Verification Feature**:
+- Same file validation as addition
+- SHA-256 computation and comparison
+- Clear feedback messages ("already verified" vs "not found")
+- No modification to blockchain during verification
+
+**Blockchain Display Feature**:
+- Formatted output showing: index, timestamp, block hash, previous hash, document hash
+- Chain statistics (total blocks, last index, last hash)
+- Human-readable presentation of technical data
+
+**Chain Validation Feature**:
+- Genesis block validation (index=0, previous_hash=64 zeros)
+- Sequential hash linkage verification
+- Hash recomputation and comparison for each block
+- Complete integrity checking across entire chain
+
+**Extension Configuration Feature**:
+- Runtime configuration without application restart
+- Comma-separated input parsing (.pdf,.docx,.png)
+- Case-insensitive extension matching
+- Dynamic allowed_extensions set management
+- Clear status indicators in menu
+
+**Persistence Management Feature**:
+- Auto-save after every blockchain mutation
+- Manual save option (option 6)
+- Auto-save on application exit
+- Graceful handling of save failures with user notification
+
+### 4.3 Security and Validation Modules
+
+**Cryptographic Security**:
+- SHA-256 implementation through hashlib library
+- Two-level hashing: document level and block level
+- Collision-resistant document fingerprinting
+- Tamper-evident blockchain linking
+
+**Input Validation**:
+- File path sanitization and trimming
+- Extension validation and normalization
+- Menu option validation with error messages
+- Graceful handling of invalid inputs
+
+**Error Handling Framework**:
+- Specific exception handling: FileNotFoundError, PermissionError, OSError
+- JSON parsing error recovery
+- Blockchain corruption detection and recovery
+- User-friendly error messages throughout
+
+## 5. USE CASES
+
+**Educational Applications**:
+- Blockchain learning without cryptocurrency complexity
+- Practical cryptography demonstrations
+- Data structure implementation examples
+
+**Business Applications**:
+- Legal document verification
+- Academic paper authenticity
+- Contract and invoice tracking
+- Compliance documentation
+
+## 6. LIMITATIONS
+
+**Technical Constraints**:
+- Memory consumption (entire blockchain in memory)
+- Linear search for verification (performance impact)
+- JSON storage overhead
+- Console-only interface
+
+**Security Limitations**:
+- Single point of failure (local file)
+- No user authentication
+- Centralized architecture
+- No digital signatures
+
+## 7. CONCLUSION
+
+The Document Verification System demonstrates blockchain principles in an educational context while providing practical document verification capabilities.
+
+**Key Strengths**:
+- Educational blockchain implementation
+- SHA-256 cryptographic security
+- User-friendly console interface
+- Automatic data persistence
+
+**Educational Value**:
+Excellent introduction to blockchain technology without cryptocurrency complexity, bridging theoretical knowledge with practical implementation.
+
+---
