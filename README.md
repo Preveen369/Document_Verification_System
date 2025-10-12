@@ -1,13 +1,13 @@
-# 🔒 Document Verification System (Blockchain-based Python Application)
+# 🔒 Document Verification System (Console-Based Blockchain Python Application)
 
 
-## 📄 1. Project Overview
+## 📄 Project Overview
 
 The Document Verification System is a beginner-friendly, console-based Python application that uses a simple blockchain to verify documents. When a user provides a file path, the app computes its SHA-256 hash and stores it as a block on the chain. Users can later verify if a document has been seen before by comparing its hash against the blockchain. The chain persists to a local JSON file for reuse across sessions.
 
 ---
 
-## 🎯 2. Objectives
+## 🎯 Objectives
 
 - Provide a minimal, educational blockchain for document verification
 - Compute and store document hashes securely (SHA-256)
@@ -18,7 +18,7 @@ The Document Verification System is a beginner-friendly, console-based Python ap
 
 ---
 
-## 🧱 3. System Architecture
+## 🧱 System Architecture
 
 ### 🔹 Components
 
@@ -32,7 +32,7 @@ The Document Verification System is a beginner-friendly, console-based Python ap
 
 ---
 
-## 🧪 4. Functional Modules
+## 🧪 Functional Modules
 
 | Module | Responsibilities |
 |--------|-------------------|
@@ -45,7 +45,7 @@ The Document Verification System is a beginner-friendly, console-based Python ap
 
 ---
 
-## 🗂️ 5. Data Format
+## 🗂️ Data Format
 
 **Storage File:** `blockchain.json`
 
@@ -72,7 +72,7 @@ Each block is stored as a JSON object:
 
 ---
 
-## 🖥️ 6. Sample Output (Console Snapshot)
+## 🖥️ Sample Output (Console Snapshot)
 
 ```
 ============================================================
@@ -102,7 +102,7 @@ File not found. Please check the path and try again.
 
 ---
 
-## 🚀 7. How to Run
+## 🧑‍💻 How to Run
 
 ### Prerequisites
 - Python 3.9+ (works on Windows/macOS/Linux)
@@ -126,7 +126,7 @@ python app.py
 
 ---
 
-## 🧾 8. Example Workflow
+## 🧾 Example Workflow
 
 1) Choose “Add document” and provide a file path (e.g., `sample.txt`).  
 2) The app computes SHA-256 and adds a block if not already present.  
@@ -136,7 +136,7 @@ python app.py
 
 ---
 
-## 🧪 9. Chain Integrity Rules
+## 🧪 Chain Integrity Rules
 
 - Genesis block uses `previous_hash` of 64 zeros and index `0`.
 - Each subsequent block must point to the exact `hash` of the previous block.
@@ -144,7 +144,7 @@ python app.py
 
 ---
 
-## 🤝 10. Contributing
+## 🤝 Contributing
 
 Pull requests are welcome! Feel free to fork the repository and submit improvements.
 
@@ -166,17 +166,19 @@ Pull requests are welcome! Feel free to fork the repository and submit improveme
 
 ---
 
-## 📧 11. Contact
+## 📄 License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📧 Contact
 For queries or suggestions:
-- 📧 Email: spreveen123@gmail.com
-- 🌐 LinkedIn: www.linkedin.com/in/preveen-s-17250529b/
+- 📩 Email: [spreveen123@gmail.com](mailto:spreveen123@gmail.com)
+- 🌐 LinkedIn: [www.linkedin.com/in/preveen-s-17250529b/](https://www.linkedin.com/in/preveen-s-17250529b/)
 
 ---
 
-## 🌟 12. Show your support
-
-If you find this project helpful or interesting, please consider giving it a ⭐ on GitHub!
-
----
+## 🌟 Show Your Support
+If you like this project, please consider giving it a ⭐ on GitHub!
 
